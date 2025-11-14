@@ -1,6 +1,6 @@
 import os
 import requests
-from flask import Flask
+from flask import Flask, request
 
 # Create the Flask web application instance. This is the core of our service.
 app = Flask(__name__)
@@ -10,7 +10,7 @@ DISCORD_WEBHOOK_URL = os.getenv('DISCORD_WEBHOOK_URL')
 
 
 @app.route("/", methods=["POST"])
-def discord_proxy_sender(request):
+def discord_proxy_sender():
     """
     This is the main function that handles incoming HTTP POST requests.
     It acts as a secure relay to forward messages to Discord.
